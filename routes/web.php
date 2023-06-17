@@ -37,6 +37,7 @@ Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'])->n
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/infagrowth',[App\Http\Controllers\InfagrowthController::class, 'index'])->name('infagrowth');
 Route::get('/infanurse',[App\Http\Controllers\InfanurseController::class, 'index'])->name('infanurse');
+Route::get('/nurserent', [App\Http\Controllers\InfanurseController::class, 'nurserent'])->name('nurserent');
 Route::get('/infarent',[App\Http\Controllers\InfarentController::class, 'index'])->name('infarent');
 Route::get('/infasolution',[App\Http\Controllers\InfasolutionController::class, 'index'])->name('infasolution');
 
@@ -69,3 +70,10 @@ Route::get('/success', function () {
 // Route::get('/save-profile', function () {
   //  return view('showuserprofile'); // Replace 'success' with the name of your success view file if different
 //})->name('save-profile');
+
+
+
+Route::get('/rentcart2', function () {
+    return view('rentCart2');
+});
+

@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class InfanurseController extends Controller
 {
-    function index(){
+    public function index()
+    {
         return view('infanurse2');
-        }
+    }
+
+    public function nurserent()
+    {
+        return view('nurserent');
+    }
 }

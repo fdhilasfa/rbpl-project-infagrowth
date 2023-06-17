@@ -24,4 +24,14 @@ class DatabaseNurse extends Model
         'reviewNurse',
         'ratingNurse',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function DatabaseRentHistory()
+    {
+        return $this->hasMany(DatabaseRentHistory::class);
+    }
 }

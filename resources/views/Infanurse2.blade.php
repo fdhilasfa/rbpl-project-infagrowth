@@ -113,6 +113,7 @@
                             </div>
 
                             <div class="information-1">
+                                <p style="font-size: 22px; font-weight: 600;">Work Experience</p>
                                 <p id="popupWorkExperience"></p>
                             </div>
 
