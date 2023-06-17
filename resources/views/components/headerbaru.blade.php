@@ -37,6 +37,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                @guest
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
@@ -45,7 +46,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link border rounded border-dark text-body"
@@ -62,11 +62,12 @@
                                 @endif
                             @endif
                         @else
-                            <a id="userDropdown" class="nav-link dropdown-toggle rounded-circle"
-                                style="width: 30px; height: 30px; background-color: #FFFFFF" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="bi bi-person"></i> <!-- Menggunakan ikon person dari Bootstrap Icons -->
-                            </a>
+                        <a id="userDropdown" class="nav-link dropdown-toggle rounded-circle"
+                        style="width: 30px; height: 30px; background-color: #FFFFFF" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <i class="bi bi-person"></i> <!-- Menggunakan ikon person dari Bootstrap Icons -->
+                    </a>
+                    @endguest
 
                             <li class="nav-item dropdown ">
 
@@ -91,11 +92,10 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
         <main class="py-4">
             @yield('content')

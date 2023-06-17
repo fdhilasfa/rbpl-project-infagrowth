@@ -17,15 +17,19 @@
     <div class="header" style="display: flex; flex-direction: row;align-items: center; margin-left: 30px;">
         <p style="font-size: 96px; font-weight: 700;">Infarent</p>
 
-        <div class="rent">
-            <p style="align-items: center; font-size: 24px;margin-left: 30px;">Rent History</p>
+        <div class="rent" style="margin-left: 20px;">
+            <a href="/rentHistory">
+            <button type="button" class="btn btn-default btn-lg bg" style="background-color:white;">Rent History</button>
+            </a>
         </div>
         <div class="keranjang" style="margin-left: 400px">
             <form action="/search" method="GET">
                 <img src="images/search.png" type="submit">
                 <input type="text" name="query" placeholder="Search" img src="" type="submit"/>
             </form>
+            <a href="/rentCart">
             <img src="images/keranjang.png" alt="" style="width: 58px; height: 58px;margin-left: 10px;">
+            </a>
         </div>
 
 
@@ -48,8 +52,10 @@
                             <p>70.000/month</p>
                         </div>
                     </div>
+                    <a href="/rentCart" onclick="renCart()">
                     <img src="images/keranjang-infarent.png" alt=""
                         style="width: 23px;height: 23px;width: 37px; height: 37px;margin-left: 10px;">
+                    </a>
 
                 </div>
                 <div class="iconbintang">
@@ -281,6 +287,12 @@
         </div>
     </div>
 
+    <script>
+        function rentCart() {
+            // Lakukan pengalihan ke halaman keranjang belanja
+            window.location.href = "/rentCart";
+        }
+    </script>
 
 
 </body>
@@ -293,19 +305,6 @@ body {
 }
 
 
-
-.rent {
-    background-color: white;
-    width: 192px;
-    height: 49px;
-    border-radius: 16px;
-    align-items: center;
-    display: flex;
-    margin-left: 25px;
-    margin-top: 20px;
-
-
-}
 
 
 

@@ -1,4 +1,4 @@
-@extends('components.header')
+@extends('components.headerbaru')
 <!doctype html>
 <html lang="en">
 
