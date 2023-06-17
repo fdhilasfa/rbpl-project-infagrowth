@@ -8,6 +8,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ProfilePictureController;
 use App\Http\Controllers\RentCartController;
 use App\Http\Controllers\ShowUserProfileController;
+use App\Http\Controllers\HistoryController;
 use App\Models\UserProfile;
 
 
@@ -39,6 +40,8 @@ Route::get('/infanurse',[App\Http\Controllers\InfanurseController::class, 'index
 Route::get('/infarent',[App\Http\Controllers\InfarentController::class, 'index'])->name('infarent');
 Route::get('/infasolution',[App\Http\Controllers\InfasolutionController::class, 'index'])->name('infasolution');
 
+Route::get('/rentHistory', [HistoryController::class, 'index'])->name('rentHistory');
+
 Route::post('/save', 'App\Http\Controllers\GrowthDataController@store')->name('save');
 Route::get('/success', function () {
     return view('showgrowthdata'); // Replace 'success' with the name of your success view file if different
@@ -63,7 +66,6 @@ Route::get('/success', function () {
  //Route::post('/save-profile', 'App\Http\Controllers\ShowUserProfileController@store')->name('save-profile');
  Route::post('/save-profile', [ShowUserProfileController::class, 'store'])->name('save-profile');
 
- Route::get('/tes', function () {
-    return view('rentCheckout');
- });
-
+// Route::get('/save-profile', function () {
+  //  return view('showuserprofile'); // Replace 'success' with the name of your success view file if different
+//})->name('save-profile');
