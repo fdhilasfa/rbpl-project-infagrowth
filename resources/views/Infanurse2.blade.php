@@ -27,312 +27,75 @@
 
         <div class="card" style="background-color: #F0CDC4">
             <div class="card-baris-1">
-                <div class="bentuk-card">
-                    <img src="images/infanurse1.jpg" alt="">
-                    <p style="font-weight: bolder;font-size: 22px;font-family: 'Poppins';"> Ajeng Riyustina</p>
-                    <div class="tambah-lokasi">
-                        <div class="lokasi-waktu">
-                            <div class="detail-card">
-                                <img src="images/icon_lokasi.png" alt="">
-                                <p>Sidoarjo</p>
-                            </div>
-                            <div class="detail-card" style="margin-top: -20px;">
-                                <img src="images/icon_jam.png" alt="">
-                                <p>3 Years</p>
-                            </div>
-                        </div>
+                @php
+                    $nurses = DB::table('database_nurses')->get();
+                    $chunks = $nurses->chunk(4);
+                @endphp
 
-                        {{-- ini pop up --}}
-                        <img src="images/icon tambah.png" alt="" style="width: 23px;height: 23px;"
-                            onclick="showPopup()">
-                        <div id="popup" class="popup">
-                            <div class="popup-content" style="width: 661px; height:940px" >
-                                <span class="close" onclick="closePopup()">&times;</span>
-                                <div class="profile">
-                                    <div class="detail-profil" style="align-items: center">
-                                        <img src="images/kotakprofil.png" alt=""
-                                            style="width: 600px;margin-bottom: -200px;">
-                                        <p style="font-size: 37px; font-weight: bolder;">Profile</p>
-                                        <img src="images/infanurse1.jpg" alt="">
-                                        <p
-                                            style="font-size: 24px; font-weight: bolder;align-items: center;margin-left: 30px;">
-                                            Ajeng Riyustina</p>
-                                        <div class="iconbintang">
-                                            <img src="images/icon_bintang_berisi.png" alt="">
-                                            <img src="images/icon_bintang_berisi.png" alt="">
-                                            <img src="images/icon_bintang_berisi.png" alt="">
-                                            <img src="images/icon_bintang_berisi.png" alt="">
-                                            <img src="images/icon_bintang_kosong.png" alt="">
+                @foreach ($chunks as $chunk)
+                    <div class="row">
+                        @foreach ($chunk as $nurse)
+                            <div class="col-lg-3 col-md-6 col-sm-12 bentuk-card">
+                                <img src="{{ asset('images/nurse'.$nurse->id.'.jpg') }}" alt="{{ $nurse->namaNurse ?: 'nurse' }}" class="card-image">
+                                <p style="font-weight: bolder; font-size: 22px; font-family: 'Poppins';">{{ $nurse->namaNurse }}</p>
+                                <p>{{ $nurse->asal }}</p>
+                                <p>{{ $nurse->tahunPengalaman }} Years</p>
 
-                                        </div>
-                                        <div class="lokasi-sid">
-                                            <div class="lokasi">
-                                                <img src="images/icon_lokasi.png" alt=""
-                                                    style="width: 20px; height: 21px;">
-                                                <p style="font-size: 20px;">Sidoarjo</p>
-                                            </div>
-                                            <div class="lokasi">
-                                                <img src="images/bintang_kosong_icon.png" alt=""
-                                                    style="width: 20px; height: 21px;">
-                                                <p style="font-size: 20px;">New Born</p>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="information">
-                                            <div class="information-1">
-                                                <p style="font-size: 22px; font-weight: 600;">Further information</p>
-                                                <p>Weight : 45 kg</p>
-                                                <p>Height : 155 cm</p>
-                                                <p>Status : Single</p>
-                                                <p>Birth : Malang, July 15th 1995</p>
-                                            </div>
-
-                                            <div class="information-1">
-                                                <p style="font-size: 22px; font-weight: 600;">Work Experience</p>
-                                                <p>1. Employed Full Time at Kutablang Clinic for 6 months</p>
-                                                <p>2. Employed Full Time at Bhayangkari Hospital for 4 months</p>
-                                                <p>3. Employed Full Time at Waru Hospital for 2 months</p>
-
-                                            </div>
-
-                                            <div class="button" class="close" onclick="closePopup()">
-                                                <p
-                                                    style="font-size: 25px;
-                                                font-weight: bolder; background-color: #FF9F84; color: white;">
-                                                    OK</p>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
+                                <div class="iconbintang">
+                                    @php
+                                        $rating = round($nurse->ratingNurse);
+                                    @endphp
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $rating)
+                                            <img src="{{ asset('images/icon_bintang_berisi.png') }}" alt="">
+                                        @else
+                                            <img src="{{ asset('images/icon_bintang_kosong.png') }}" alt="">
+                                        @endif
+                                    @endfor
                                 </div>
+
+                                <img src="{{ asset('images/icon_tambah.png') }}" alt="" style="width: 23px; height: 23px;" onclick="showPopup({{ $nurse->id }})">
                             </div>
-                        </div>
-
+                        @endforeach
                     </div>
-                    <div class="iconbintang">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_kosong.png" alt="">
-
-                    </div>
-
-
-
-                </div>
-                <div class="bentuk-card">
-                    <img src="images/infanurse2.png" alt="">
-                    <p style="font-weight: bolder;font-size: 22px;font-family: 'Poppins';"> Ajeng Riyustina</p>
-                    <div class="tambah-lokasi">
-                        <div class="lokasi-waktu">
-                            <div class="detail-card">
-                                <img src="images/icon_lokasi.png" alt="">
-                                <p>Sidoarjo</p>
-                            </div>
-                            <div class="detail-card" style="margin-top: -20px;">
-                                <img src="images/icon_jam.png" alt="">
-                                <p>3 Years</p>
-                            </div>
-                        </div>
-                        <img src="images/icon tambah.png" alt="" style="width: 23px;height: 23px;">
-
-                    </div>
-                    <div class="iconbintang">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_kosong.png" alt="">
-
-                    </div>
-
-
-
-                </div>
-                <div class="bentuk-card">
-                    <img src="images/infanurse3.png" alt="">
-                    <p style="font-weight: bolder;font-size: 22px;font-family: 'Poppins';"> Ajeng Riyustina</p>
-                    <div class="tambah-lokasi">
-                        <div class="lokasi-waktu">
-                            <div class="detail-card">
-                                <img src="images/icon_lokasi.png" alt="">
-                                <p>Sidoarjo</p>
-                            </div>
-                            <div class="detail-card" style="margin-top: -20px;">
-                                <img src="images/icon_jam.png" alt="">
-                                <p>3 Years</p>
-                            </div>
-                        </div>
-                        <img src="images/icon tambah.png" alt="" style="width: 23px;height: 23px;">
-
-                    </div>
-                    <div class="iconbintang">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_kosong.png" alt="">
-
-                    </div>
-
-
-
-                </div>
-                <div class="bentuk-card">
-                    <img src="images/infanurse4.png" alt="">
-                    <p style="font-weight: bolder;font-size: 22px;font-family: 'Poppins';"> Ajeng Riyustina</p>
-                    <div class="tambah-lokasi">
-                        <div class="lokasi-waktu">
-                            <div class="detail-card">
-                                <img src="images/icon_lokasi.png" alt="">
-                                <p>Sidoarjo</p>
-                            </div>
-                            <div class="detail-card" style="margin-top: -20px;">
-                                <img src="images/icon_jam.png" alt="">
-                                <p>3 Years</p>
-                            </div>
-                        </div>
-                        <img src="images/icon tambah.png" alt="" style="width: 23px;height: 23px;">
-
-                    </div>
-                    <div class="iconbintang">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_kosong.png" alt="">
-
-                    </div>
-
-
-
-                </div>
-
+                @endforeach
             </div>
 
-            <div class="card-baris-2">
-                <div class="bentuk-card">
-                    <img src="images/infanurse5.png" alt="">
-                    <p style="font-weight: bolder;font-size: 22px;font-family: 'Poppins';"> Ajeng Riyustina</p>
-                    <div class="tambah-lokasi">
-                        <div class="lokasi-waktu">
-                            <div class="detail-card">
-                                <img src="images/icon_lokasi.png" alt="">
-                                <p>Sidoarjo</p>
-                            </div>
-                            <div class="detail-card" style="margin-top: -20px;">
-                                <img src="images/icon_jam.png" alt="">
-                                <p>3 Years</p>
-                            </div>
-                        </div>
-                        <img src="images/icon tambah.png" alt="" style="width: 23px;height: 23px;">
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <img src="{{ asset('images/nurse'.$nurse->id.'.jpg') }}" alt="{{ $nurse->namaNurse ?: 'nurse' }}">
+                    <p style="font-size: 24px; font-weight: bolder; align-items: center; margin-left: 30px;">{{ $nurse->namaNurse }}</p>
 
-                    </div>
                     <div class="iconbintang">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_kosong.png" alt="">
-
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <= $rating)
+                                <img src="{{ asset('images/icon_bintang_berisi.png') }}" alt="">
+                            @else
+                                <img src="{{ asset('images/icon_bintang_kosong.png') }}" alt="">
+                            @endif
+                        @endfor
                     </div>
 
+                    <p style="font-size: 20px;">{{ $nurse->asal }}</p>
+                    <p style="font-size: 20px;">{{ $nurse->tahunPengalaman }}</p>
 
+                    <p>Weight : {{ $nurse->beratNurse }} kg</p>
+                    <p>Height : {{ $nurse->tinggiNurse }} cm</p>
+                    <p>Status : {{ $nurse->statusNurse }}</p>
+                    <p>Birth : {{ $nurse->TTLNurse }}</p>
 
+                    <div class="information-1">
+                        <p style="font-size: 22px; font-weight: 600;">Work Experience</p>
+                        <p>{{ $nurse->workExperience }}</p>
+                    </div>
+
+                    <div class="button" class="close" onclick="closePopup()">
+                        <p style="font-size: 25px; font-weight: bolder; background-color: #FF9F84; color: white;">OK</p>
+                    </div>
                 </div>
-                <div class="bentuk-card">
-                    <img src="images/infanurse6.png" alt="">
-                    <p style="font-weight: bolder;font-size: 22px;font-family: 'Poppins';"> Ajeng Riyustina</p>
-                    <div class="tambah-lokasi">
-                        <div class="lokasi-waktu">
-                            <div class="detail-card">
-                                <img src="images/icon_lokasi.png" alt="">
-                                <p>Sidoarjo</p>
-                            </div>
-                            <div class="detail-card" style="margin-top: -20px;">
-                                <img src="images/icon_jam.png" alt="">
-                                <p>3 Years</p>
-                            </div>
-                        </div>
-                        <img src="images/icon tambah.png" alt="" style="width: 23px;height: 23px;">
-
-                    </div>
-                    <div class="iconbintang">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_kosong.png" alt="">
-
-                    </div>
-
-
-
-                </div>
-                <div class="bentuk-card">
-                    <img src="images/infanurse7.png" alt="">
-                    <p style="font-weight: bolder;font-size: 22px;font-family: 'Poppins';"> Ajeng Riyustina</p>
-                    <div class="tambah-lokasi">
-                        <div class="lokasi-waktu">
-                            <div class="detail-card">
-                                <img src="images/icon_lokasi.png" alt="">
-                                <p>Sidoarjo</p>
-                            </div>
-                            <div class="detail-card" style="margin-top: -20px;">
-                                <img src="images/icon_jam.png" alt="">
-                                <p>3 Years</p>
-                            </div>
-                        </div>
-                        <img src="images/icon tambah.png" alt="" style="width: 23px;height: 23px;">
-
-                    </div>
-                    <div class="iconbintang">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_kosong.png" alt="">
-
-                    </div>
-
-
-                </div>
-                <div class="bentuk-card">
-                    <img src="images/infanurse8.png" alt="">
-                    <p style="font-weight: bolder;font-size: 22px;font-family: 'Poppins';"> Ajeng Riyustina</p>
-                    <div class="tambah-lokasi">
-                        <div class="lokasi-waktu">
-                            <div class="detail-card">
-                                <img src="images/icon_lokasi.png" alt="">
-                                <p>Sidoarjo</p>
-                            </div>
-                            <div class="detail-card" style="margin-top: -20px;">
-                                <img src="images/icon_jam.png" alt="">
-                                <p>3 Years</p>
-                            </div>
-                        </div>
-                        <img src="images/icon tambah.png" alt="" style="width: 23px;height: 23px;">
-
-                    </div>
-                    <div class="iconbintang">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_berisi.png" alt="">
-                        <img src="images/icon_bintang_kosong.png" alt="">
-
-                    </div>
-
-
-
-                </div>
-
             </div>
-        </div>
+
+            
 
         <script>
             function showPopup() {

@@ -64,6 +64,6 @@ Route::get('/success', function () {
  Route::post('/save-profile', [ShowUserProfileController::class, 'store'])->name('save-profile');
 
  Route::get('/tes', function () {
-    return view('infanurse');
+    return view('rentCheckout');
  });
 
