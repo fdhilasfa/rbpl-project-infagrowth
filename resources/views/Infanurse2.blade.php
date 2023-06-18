@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="">
-        <title>Document</title>
+        <title>Infanurse</title>
     </head>
 
     <body>
@@ -20,7 +20,7 @@
             <p style="font-size: 96px; font-weight: 700;">Infanurse</p>
 
             <div class="rent">
-                <p style="align-items: center; font-size: 24px; margin-left: 30px;">Rent History</p>
+               <a href="/rentHistory"> <button style="align-items: center; font-size: 24px; margin-left: 30px;">Rent History</button> </a>
             </div>
         </div>
 
@@ -203,16 +203,6 @@
             justify-content: center;
         }
 
-        .rent {
-            background-color: white;
-            width: 192px;
-            height: 49px;
-            border-radius: 16px;
-            align-items: center;
-            display: flex;
-            margin-left: 25px;
-            margin-top: 20px;
-        }
 
         .card {
             display: flex;

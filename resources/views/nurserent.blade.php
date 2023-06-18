@@ -43,7 +43,7 @@
 
         <div class="mx-[165px] my-12">
             <div class="flex flex-row gap-12">
-                <img class="" src="{{ asset('images/back.svg') }}">
+                <a href="infanurse"><img class="" src="{{ asset('images/back.svg') }}"> </a>
                 <h1 class="text-[50px] tracking-widest font-lexend font-semibold">Nurse Cart</h1>
             </div>
             <div class="w-full px-8 mt-6 items-center relative text-center font-lexend grid grid-cols-5  h-40 bg-white">

@@ -35,57 +35,6 @@
                     </div>
                   </div>
 
-            
-
-               {{-- <div class="cart-item">
-                  <div class="row">
-                     <div class="col-md-7 center-item">
-                        <img src="images/babyw.webp" alt="">
-                        <div class="barang" style="margin-right: 40px;">
-                        <h5>Baby Walker</h5>
-                        <h6>Kalimantan Barat</h6>
-                        </div>
-                        <h5>$ <span id="phone-total">1219</span> </h5>
-                     </div>
-
-                     <div class="col-md-5 center-item">
-
-                        <div class="input-group number-spinner">
-                           <button id="phone-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="phone-number" type="number" min="0" class="form-control text-center" value="1">
-                           <button id="phone-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
-
-                        </div>
-                        </div>
-
-                        </div>
-                  </div>
-
-
-               <div class="cart-item">
-                  <div class="row">
-                     <div class="col-md-7 center-item ">
-                        <img src="images/bathub.jpg" alt="">
-                        <div class="barang" style="margin-right: 40px;">
-                        <h5>Baby Walker</h5>
-                        <h6>Kalimantan Barat</h6>
-                        </div>
-                        <h5>$ <span id="case-total">59</span> </h5>
-                     </div>
-                     <div class="col-md-5 center-item">
-
-                        <div class="input-group number-spinner">
-                           <button id="case-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="case-number" type="number" min="0" class="form-control text-center" value="1">
-                           <button  id="case-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
-                        </div>
-                        </div>
-                        <img src="images/remove.png" alt="" class="remove-item">
-                     </div>
-                  </div>
-
-
-               <div class="cart-item"> --}}
 
 
                 <div class="row justify-content-end">
