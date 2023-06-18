@@ -25,6 +25,7 @@ class DatabaseNurse extends Model
         'workExperience',
         'reviewNurse',
         'ratingNurse',
+        'harga',
     ];
 
     public function user()

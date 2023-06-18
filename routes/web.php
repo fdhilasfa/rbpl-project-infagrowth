@@ -11,7 +11,7 @@ use App\Http\Controllers\ShowUserProfileController;
 use App\Http\Controllers\HistoryController;
 use App\Models\UserProfile;
 use App\Http\Controllers\RentCheckoutController;
-
+use App\Http\Controllers\reviewNurseController;
 
 
 
@@ -45,6 +45,7 @@ Route::get('/infarent',[App\Http\Controllers\InfarentController::class, 'index']
 Route::get('/infasolution',[App\Http\Controllers\InfasolutionController::class, 'index'])->name('infasolution');
 
 Route::get('/rentHistory', [HistoryController::class, 'index'])->name('rentHistory');
+Route::get('/reviewNurse', [reviewNurseController::class, 'index'])->name('reviewNurse');
 
 
 Route::post('/submit-nurserent', [App\Http\Controllers\InfanurseController::class, 'submitNurserent'])->name('submit-nurserent');

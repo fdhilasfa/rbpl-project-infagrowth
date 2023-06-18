@@ -73,8 +73,8 @@
                         <select
                             class="text-[#677489] indent-5 pl-4 w-[536px] h-12 rounded-xl ring-1 ring-gray-200 focus:outline-none"
                             type="address" name="" id="">
-                            <option class="pl-4" value="Mandiri">Mandiri (1630004400533) a.n Infacare</option>
-                            <option class="pl-4" value="BCA">Bca (7435395323) a.n Anjay</option>
+                            <option class="pl-4" value="Mandiri">Mandiri (1630004400533) a.n Lastono</option>
+                            <option class="pl-4" value="BCA">Bca (7435395323) a.n Avicenna</option>
                         </select>
                         <img src="images/bank.svg" class="absolute bottom-[13%] left-2" alt="">
                     </div>

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('workExperience', 200);
             $table->string('reviewNurse', 25);
             $table->string('ratingNurse', 25);
+            $table->varchar('harga', 50);
             $table->timestamps();
         });
     }

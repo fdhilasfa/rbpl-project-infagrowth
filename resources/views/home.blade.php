@@ -84,7 +84,7 @@
 
     <div class="container py-4" id="review">
         <div class="col-md-6 py-2">
-            <h5 style="font-weight: bold;">Leave Us Review!</h5>
+         <a href="/reviewNurse">  <h5 style="font-weight: bold;">Leave Us Review!</h5> </a>
         </div>
     </div>
 

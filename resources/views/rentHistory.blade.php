@@ -19,7 +19,7 @@
 
     <section>
         <div class="container">
-            <h2>Rent Cart</h2>
+            <h2>Rent History</h2>
             <div class="cart">
                 <table class="table table-bordered table-white">
                     <thead>

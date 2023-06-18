@@ -26,7 +26,6 @@ class CreateDatabaseRentHistorysTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('nurse_id')->references('id')->on('database_nurses')->onDelete('cascade');
-            $table->foreign('barang_id')->references('id')->on('database_nurses')->onDelete('cascade');
         });
 
     }

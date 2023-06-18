@@ -91,7 +91,7 @@
                     {{ $formattedPrice }}
                 </h1>
 
-                <a class="absolute right-8 w-10" href="">
+                <a class="absolute right-8 w-10" href="/infanurse">
                     <img src="{{ asset('images/del-icon.svg') }}" alt="">
                 </a>
             </div>

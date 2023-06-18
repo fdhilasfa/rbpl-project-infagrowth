@@ -108,7 +108,6 @@
                                 $transaction = \App\Models\DatabaseRentHistory::find($transactionId);
                                 $idBarang = $transaction ? $transaction->id_barang : null;
                                 $perlengkapanBayi = $idBarang ? \App\Models\PerlengkapanBayi::find($idBarang) : null;
-                                $namaBarang = $perlengkapanBayi ? $perlengkapanBayi->namaBarang : 'Barang Not Found';
                             @endphp
 
 
