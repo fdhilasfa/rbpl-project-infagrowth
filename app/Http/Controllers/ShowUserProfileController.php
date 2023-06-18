@@ -48,11 +48,30 @@ class ShowUserProfileController extends Controller
         $ShowUserProfile->birthday_month = $validatedData['birthday_month'];
         $ShowUserProfile->birthday_day = $validatedData['birthday_day'];
         $ShowUserProfile->birthday_year = $validatedData['birthday_year'];
+/*
+        $user = Auth::user();
+        $user->first_name = $validatedData['first_name'];
+        $user->last_name = $validatedData['last_name'];
+        $user->email_address = $validatedData['email_address'];
+        $user->address = $validatedData['address'];
+        $user->contact_number = $validatedData['contact_number'];
+        $user->province = $validatedData['province'];
+        $user->city = $validatedData['city'];
+        $user->birthday_month = $validatedData['birthday_month'];
+        $user->birthday_day = $validatedData['birthday_day'];
+        $user->birthday_year = $validatedData['birthday_year'];
+
+*/
+
         if ($request->hasFile('profile_picture')) {
             $image = $request->file('profile_picture');
-            $imageName = time()."_".$image->getClientOriginalName();
+            $imageName = time() . "_" . $image->getClientOriginalName();
             $image->storeAs('public/profile_pictures', $imageName);
-            $ShowUserProfile->profile_picture = $imageName;
+
+            $user = Auth::user();
+            $user->profile_picture = $imageName;
+            $user->save();
+
             //  $ShowUserProfile = Auth::user();
 
         }
@@ -60,20 +79,34 @@ class ShowUserProfileController extends Controller
         $ShowUserProfile->save();
 
           // Redirect to the show-profile route with the id parameter
-    return redirect()->route('show-profile', ['id' => $ShowUserProfile->id]);
+          return view('showuserprofile', ['user' => $ShowUserProfile]);
 
-       // return view('showuserprofile');
-        //return redirect()->route('/showuserprofile/{id}')->with('success', 'User profile saved successfully.');
 
 
     }
+/*
+    public function showProfile($id)
+{
+    $ShowUserProfile = ShowUserProfile::findOrFail($id);
+    return view('showuserprofile', compact('ShowUserProfile'))
+        ->with('header', view('header', compact('ShowUserProfile')));
+}
+*/public function __construct()
+{
+    $this->middleware('auth');
+}
+
 
     public function showProfile($id)
     {
         $ShowUserProfile = ShowUserProfile::findOrFail($id);
 
-        return view('showuserprofile', compact('ShowUserProfile'));
+        return view('showuserprofile',  compact('ShowUserProfile'));
+
     }
+
+
+
 
   /*  public function getUserProfilePicture()
     {

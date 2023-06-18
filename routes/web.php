@@ -79,9 +79,9 @@ Route::get('/success', function () {
 
  Route::get('/userprofile', [UserProfileController::class, 'index'])->name('userprofile');
 
- Route::post('profilepicture/upload', [ProfilePictureController::class, 'upload'])->name('profilepicture.upload');
+//  Route::post('profilepicture/upload', [ProfilePictureController::class, 'upload'])->name('profilepicture.upload');
 
- Route::get('/showuserprofile/{id}', [ProfilePictureController::class, 'showUserProfile'])->name('showuserprofile');
+//  Route::get('/showuserprofile/{id}', [ProfilePictureController::class, 'showUserProfile'])->name('showuserprofile');
 
  Route::get('/rentcart/{id}', [RentCartController::class, 'index'])->name('rentCart');
  Route::post('/submit-rent', [App\Http\Controllers\RentCartController::class, 'submitrent'])->name('submit-rent');
@@ -89,13 +89,10 @@ Route::get('/success', function () {
 
  Route::post('/profile/password/verify', [ProfilePasswordController::class, 'verifyPassword'])->name('profile.password.verify');
 
- //Route::get('/showuserprofile', [ShowUserProfileController::class, 'showUserProfile'])->name('showuserprofile');
 
-
- //Route::post('/save', [ShowUserProfileController::class, 'store'])->name('save');
- //Route::post('/save', [App\Http\Controllers\ShowUserProfileController::class, 'store'])->name('save');
- //Route::post('/save-profile', 'App\Http\Controllers\ShowUserProfileController@store')->name('save-profile');
  Route::post('/save-profile', [ShowUserProfileController::class, 'store'])->name('save-profile');
+
+Route::get('/show-profile/{id}', [ShowUserProfileController::class, 'showProfile'])->name('show-profile');
 
 // Route::get('/save-profile', function () {
   //  return view('showuserprofile'); // Replace 'success' with the name of your success view file if different

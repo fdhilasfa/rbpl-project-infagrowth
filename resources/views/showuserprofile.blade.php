@@ -55,59 +55,18 @@
                 left: 18%;
             }
         </style>
-        <!--  <div class="container-fluid p-0">
-                    <nav class="navbar navbar-expand-sm navbar-light bg-light-brown shadow-sm">
-                        <div class="container">
-                            <img src="images/logo.jpeg" class="navbar-brand py-0" alt="">
-                            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                           <!-- <div class="collapse navbar-collapse d-flex justify-content-end" id="collapsibleNavId">
-                                <ul class="nav justify-content-center">
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark " aria-current="page" href="#">Infasolution</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark " aria-current="page" href="#">Infagrowth</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark " aria-current="page" href="#">Infanurse</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark " aria-current="page" href="#">Infarent</a>
-                                    </li>
-
-                                </ul>
-                                <div class="d-flex">
-                                    <a class="nav-link text-dark pt-1 mx-2" aria-current="page" href="#">Karina Ayu</a>
-                                    <img src="girl.jpeg" class="profile-pict" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </nav>-->
 
         <section class="vh-100">
-
             <div class="container-fluid bg-light-pink" id="bg-light-pink">
                 <div id="about-header">
                     <div class="d-flex justify-content-center pt-5 mb-3">
-                        <div class="profile-picture">
 
-                            <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile_picture) }}"
-                                alt="Profile Picture " class="profile-picture">
-
-
-                        </div>
                         <i class="fa fa-pencil fa-2x position-relative" id="pencil" aria-hidden="true"></i>
                     </div>
 
 
 
-                    <h1 class="text-center fw-bold"
-                        style="font-family: Nunito; opacity:90%; margin-top:110px; margin-bottom:-20px">
-                        {{ $ShowUserProfile->first_name }} {{ $ShowUserProfile->last_name }}</h1>
+                    <h1 class="text-center fw-bold" style="font-family: Nunito; opacity:90%; margin-top:110px; margin-bottom:-20px"></h1>
 
                 </div>
 
@@ -127,9 +86,7 @@
                                     Name
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-
-                                    {{ $ShowUserProfile->first_name }} {{ $ShowUserProfile->last_name }}
-
+                                    {{ $user->first_name }} {{ $user->last_name }}
                                 </div>
 
                                 <div class="col-lg-1" style="margin-bottom: 10px;">
@@ -140,7 +97,7 @@
                                     Email
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-                                    {{ $ShowUserProfile->email_address }}
+                                    {{$user->email_address}}
                                 </div>
 
                                 <div class="col-lg-1" style="margin-bottom: 10px;">
@@ -151,7 +108,7 @@
                                     Phone No.
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-                                    {{ $ShowUserProfile->contact_number }}
+                                    {{$user->contact_number}}
                                 </div>
 
                                 <div class="col-lg-1" style="margin-bottom: 10px;">
@@ -162,7 +119,7 @@
                                     Address
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-                                    {{ $ShowUserProfile->address }}
+                                    {{$user->address}}
                                 </div>
 
                                 <div class="col-lg-1" style="margin-bottom: 10px;">
@@ -173,9 +130,7 @@
                                     Birthday
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-
-                                    {{ $ShowUserProfile->city }}, {{ $ShowUserProfile->birthday_month }}
-                                    {{ $ShowUserProfile->birthday_day }} {{ $ShowUserProfile->birthday_year }}
+                                    {{$user->birthday_day}} {{$user->birthday_month}} {{$user->birthday_year}}
                                 </div>
 
 
@@ -184,12 +139,10 @@
 
                     </div>
                     <div class="d-flex justify-content-center mt-4">
-                        <a href="{{ route('userprofile') }}" class="btn fw-semi bold mx-3"
-                            style="font-family: Lexend">Edit Profile</a>
-                        <button type="button" class="btn fw-semi bold mx-3" style="font-family: Lexend"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Sign Out
-                        </button>
+                        <a href="{{ route('userprofile') }}" class="btn fw-semi bold mx-3" style="font-family: Lexend">Edit Profile</a>
+                            <button type="button" class="btn fw-semi bold mx-3" style="font-family: Lexend" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Sign Out
+                            </button>
                     </div>
                 </div>
             </div>
@@ -201,27 +154,27 @@
 
     <style>
         /* * {
-                    font-family: 'Montserrat';
-                    font-weight: 700;
+                font-family: 'Montserrat';
+                font-weight: 700;
 
-                } */
+            } */
 
-        .profile-picture {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
+            .profile-picture {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
 
 
-        }
+}
 
-        .profile-picture img {
-            width: 130px;
-            height: 130px;
-            border-radius: 100%;
-            object-fit: cover;
-            margin-left: -110%;
+.profile-picture img {
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-left: -110%;
 
-        }
+}
 
 
 
