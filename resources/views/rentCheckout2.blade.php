@@ -93,24 +93,26 @@
                     <div class="w-[456px] ring-1 bg-white rounded-t-xl ring-gray-200 h-[134px]">
                         <div class="flex flex-row gap-10 h-full justify-center items-center">
                             @php
-                                $nurseId = $transaction ? $transaction->nurse_id : null;
-                                $imageName = $nurseId ? "nurse{$nurseId}.jpg" : 'nurse.jpg';
-                                $imagePath = public_path("images/nurse/{$imageName}");
-                                $imageSource = file_exists($imagePath) ? asset("images/nurse/{$imageName}") : asset('images/nurse.jpg');
+                                $idBarang = request()->segment(2); // Mengambil segment kedua dari URL (misal: /rentcart/19)
+                                $perlengkapanBayi = \App\Models\PerlengkapanBayi::find($idBarang);
+                                $imageName = $perlengkapanBayi ? "nurse{$perlengkapanBayi->id}.jpg" : 'nurse.jpg';
+                                $imagePath = public_path("images/barang/{$imageName}");
+                                $imageSource = file_exists($imagePath) ? asset("images/barang/{$imageName}") : asset('images/barang.jpg');
                             @endphp
 
                             <img class="w-20 h-20" src="{{ $imageSource }}" alt="">
 
                             <div class="flex flex-col">
                                 @php
-                                    $transactionId = request()->segment(2); // Mengambil segment kedua dari URL (misal: /checkout/19)
-                                    $transaction = \App\Models\DatabaseRentHistory::find($transactionId);
-                                    $nurseId = $transaction ? $transaction->nurse_id : null;
-                                    $nurse = $nurseId ? \App\Models\DatabaseNurse::find($nurseId) : null;
-                                    $namaNurse = $nurse ? $nurse->namaNurse : 'Nurse Not Found';
-                                @endphp
+                                $transactionId = request()->segment(2); // Mengambil segment kedua dari URL (misal: /rentcart/19)
+                                $transaction = \App\Models\DatabaseRentHistory::find($transactionId);
+                                $idBarang = $transaction ? $transaction->id_barang : null;
+                                $perlengkapanBayi = $idBarang ? \App\Models\PerlengkapanBayi::find($idBarang) : null;
+                                $namaBarang = $perlengkapanBayi ? $perlengkapanBayi->namaBarang : 'Barang Not Found';
+                            @endphp
 
-                                <h1>{{ $namaNurse }}</h1>
+
+                                <h1>{{ $namaBarang }}</h1>
 
                                 <p><span class="text-[#677489]">Rent Duration:</span> {{ $transaction->durasiSewa }} Month
                                 </p>
@@ -123,39 +125,39 @@
                             <p class="mb-6">Rp. {{ $harga }}</p>
 
                         </div>
-                    </div>
 
-                    <div class="mt-28">
-                        <hr class="outline-none w-[456px] h-0.5 bg-[#888F99]">
-                        <div class="flex flex-col my-4 gap-4">
-                            <div class="flex flex-row justify-between">
-                                <h1 class="text-xl text-[#677489]">Subtotal</h1>
-                                <p class="text-xl">Rp {{ $harga }}</p>
+
+                        <div class="mt-28">
+                            <hr class="outline-none w-[456px] h-0.5 bg-[#888F99]">
+                            <div class="flex flex-col my-4 gap-4">
+                                <div class="flex flex-row justify-between">
+                                    <h1 class="text-xl text-[#677489]">Subtotal</h1>
+                                    <p class="text-xl">Rp {{ $harga }}</p>
+                                </div>
+                                <div class="flex flex-row justify-between">
+                                    <h1 class="text-xl text-[#677489]">Shipping Cost</h1>
+                                    @php
+                                        $randomValue = rand(2000, 4000) * 5;
+                                        $formattedValue = number_format($randomValue, 0, ',', '.');
+                                    @endphp
+                                    <p class="text-xl">Rp{{ $formattedValue }}</p>
+                                </div>
                             </div>
-                            <div class="flex flex-row justify-between">
-                                <h1 class="text-xl text-[#677489]">Shipping Cost</h1>
-                                @php
-                                    $randomValue = rand(2000, 8000) * 5;
-                                    $formattedValue = number_format($randomValue, 0, ',', '.');
-                                @endphp
-                                <p class="text-xl">Rp{{ $formattedValue }}</p>
-                            </div>
+                            <hr class="outline-none w-[456px] h-0.5 bg-[#888F99]">
                         </div>
-                        <hr class="outline-none w-[456px] h-0.5 bg-[#888F99]">
-                    </div>
-                    <div class="flex flex-row my-4 justify-between">
-                        <h1 class="text-xl">Total</h1>
-                        @php
-                            $subtotal = preg_replace('/\D/', '', $harga); // Menghapus karakter non-digit dari $harga
-                            $shippingCost = preg_replace('/\D/', '', $formattedValue); // Menghapus karakter non-digit dari $formattedValue
-                            $total = $subtotal + $shippingCost;
-                            $formattedTotal = number_format($total, 0, ',', '.');
-                        @endphp
-                        <p class="text-xl">Rp{{ $formattedTotal }}</p>
+                        <div class="flex flex-row my-4 justify-between">
+                            <h1 class="text-xl">Total</h1>
+                            @php
+                                $subtotal = preg_replace('/\D/', '', $harga); // Menghapus karakter non-digit dari $harga
+                                $shippingCost = preg_replace('/\D/', '', $formattedValue); // Menghapus karakter non-digit dari $formattedValue
+                                $total = $subtotal + $shippingCost;
+                                $formattedTotal = number_format($total, 0, ',', '.');
+                            @endphp
+                            <p class="text-xl">Rp{{ $formattedTotal }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </body>
 
     </html>

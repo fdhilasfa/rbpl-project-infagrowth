@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDatabaseRentHistoryTable extends Migration
+class CreateDatabaseRentHistorysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,18 +15,20 @@ class CreateDatabaseRentHistoryTable extends Migration
     {
         Schema::create('database_rent_history', function (Blueprint $table) {
             $table->bigIncrements('orderID');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('nurse_id');
+            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('nurse_id')->index();
             $table->integer('durasiSewa');
             $table->date('paymentDate');
-            $table->string('paymentStatus', 25);
-            $table->string('namaBarang', 25);
+            $table->string('status', 25)->default('default_value');
+            $table->string('namaBarang', 255);
             $table->integer('harga');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('nurse_id')->references('id')->on('database_nurses')->onDelete('cascade');
+            $table->foreign('barang_id')->references('id')->on('database_nurses')->onDelete('cascade');
         });
+
     }
 
     /**

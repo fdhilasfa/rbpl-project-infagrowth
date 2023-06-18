@@ -10,6 +10,9 @@ use App\Http\Controllers\RentCartController;
 use App\Http\Controllers\ShowUserProfileController;
 use App\Http\Controllers\HistoryController;
 use App\Models\UserProfile;
+use App\Http\Controllers\RentCheckoutController;
+
+
 
 
 
@@ -43,6 +46,12 @@ Route::get('/infasolution',[App\Http\Controllers\InfasolutionController::class, 
 
 Route::get('/rentHistory', [HistoryController::class, 'index'])->name('rentHistory');
 
+
+Route::post('/submit-nurserent', [App\Http\Controllers\InfanurseController::class, 'submitNurserent'])->name('submit-nurserent');
+Route::get('/checkout/{id}', [App\Http\Controllers\RentCheckoutController::class, 'rentCheckout'])->name('checkout');
+Route::post('/updateRentHistory/{id}', [App\Http\Controllers\RentCheckoutController::class, 'update'])->name('updateRentHistory');
+
+
 Route::post('/save', 'App\Http\Controllers\GrowthDataController@store')->name('save');
 Route::get('/success', function () {
     return view('showgrowthdata'); // Replace 'success' with the name of your success view file if different
@@ -55,7 +64,9 @@ Route::get('/success', function () {
 
  Route::get('/showuserprofile/{id}', [ProfilePictureController::class, 'showUserProfile'])->name('showuserprofile');
 
- Route::get('/rentCart', [RentCartController::class, 'index'])->name('rentCart');
+ Route::get('/rentcart/{id}', [RentCartController::class, 'index'])->name('rentCart');
+ Route::post('/submit-rent', [App\Http\Controllers\RentCartController::class, 'submitrent'])->name('submit-rent');
+ Route::get('/check-out/{id}', [App\Http\Controllers\RentCheckoutController::class, 'rentCheckout2'])->name('checkout2');
 
  Route::post('/profile/password/verify', [ProfilePasswordController::class, 'verifyPassword'])->name('profile.password.verify');
 

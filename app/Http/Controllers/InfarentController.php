@@ -10,3 +10,4 @@ class InfarentController extends Controller
         return view('infarent2');
         }
 }
+

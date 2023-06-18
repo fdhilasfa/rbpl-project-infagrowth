@@ -39,7 +39,7 @@
                                 $imageURL = file_exists(public_path($imagePath)) ? asset($imagePath) : asset('images/nurse.jpg');
                             @endphp
                             <div class="col-lg-3 col-md-6 col-sm-12 bentuk-card">
-                                <img src="{{ $imageURL }}" alt="Profile Image" class="person-img">
+                                <img src="{{ $imageURL }}" alt="Profile Image" class="person-img" onclick="redirectToNurseRent({{ $nurse['id'] }})">
                                 <p style="font-weight: bolder; font-size: 22px; font-family: 'Poppins';">
                                     {{ $nurse['namaNurse'] }}</p>
                                 <div class="tambah-lokasi">
@@ -80,6 +80,8 @@
                 @endforeach
             </div>
         </div>
+
+
 
         <div id="popup" class="popup" style="display: none;">
             <div class="popup-content" style="width: 661px; height:940px">
@@ -128,6 +130,13 @@
         </div>
 
         <script>
+            function redirectToNurseRent(id) {
+                window.location.href = "/nurserent?id=" + id;
+            }
+        </script>
+
+        <script>
+
             function showPopup(id) {
                 var popup = document.getElementById("popup");
                 popup.style.display = "block";

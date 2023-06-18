@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\DatabaseNurse;
+use App\Models\PerlengkapanBayi;
 
 class DatabaseRentHistory extends Model
 {
@@ -17,7 +18,7 @@ class DatabaseRentHistory extends Model
         'nurse_id',
         'durasiSewa',
         'paymentDate',
-        'paymentStatus',
+        'status',
         'namaBarang',
         'harga',
     ];
@@ -27,7 +28,12 @@ class DatabaseRentHistory extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function nurse()
+    public function DatabaseNurse()
+    {
+        return $this->belongsTo(DatabaseNurse::class);
+    }
+
+    public function PerlengkapanBayi()
     {
         return $this->belongsTo(DatabaseNurse::class);
     }
