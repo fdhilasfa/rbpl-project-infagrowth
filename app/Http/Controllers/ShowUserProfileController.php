@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+
 class ShowUserProfileController extends Controller
 {
 
@@ -47,13 +48,46 @@ class ShowUserProfileController extends Controller
         $ShowUserProfile->birthday_month = $validatedData['birthday_month'];
         $ShowUserProfile->birthday_day = $validatedData['birthday_day'];
         $ShowUserProfile->birthday_year = $validatedData['birthday_year'];
+        if ($request->hasFile('profile_picture')) {
+            $image = $request->file('profile_picture');
+            $imageName = time()."_".$image->getClientOriginalName();
+            $image->storeAs('public/profile_pictures', $imageName);
+            $ShowUserProfile->profile_picture = $imageName;
+            //  $ShowUserProfile = Auth::user();
+
+        }
+
         $ShowUserProfile->save();
 
-        return view('showuserprofile');
+          // Redirect to the show-profile route with the id parameter
+    return redirect()->route('show-profile', ['id' => $ShowUserProfile->id]);
+
+       // return view('showuserprofile');
         //return redirect()->route('/showuserprofile/{id}')->with('success', 'User profile saved successfully.');
 
 
     }
+
+    public function showProfile($id)
+    {
+        $ShowUserProfile = ShowUserProfile::findOrFail($id);
+
+        return view('showuserprofile', compact('ShowUserProfile'));
+    }
+
+  /*  public function getUserProfilePicture()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $profilePicture = $user->profile_picture;
+            return asset('storage/profile_pictures/' . $profilePicture);
+        }
+
+        return null;
+    }*/
+
+
+/*
     public function showUserData()
     {
         $ShowUserProfile = DB::table('user_profiles')->get(); // Retrieve growth data from the database table
@@ -62,6 +96,6 @@ class ShowUserProfileController extends Controller
         //return $ShowUserProfile;
         return view('showuserprofile', compact('showUserProfile'));
     }
-
+*/
 
 }

@@ -89,12 +89,14 @@
                     </nav>-->
 
         <section class="vh-100">
+
             <div class="container-fluid bg-light-pink" id="bg-light-pink">
                 <div id="about-header">
                     <div class="d-flex justify-content-center pt-5 mb-3">
                         <div class="profile-picture">
+
                             <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile_picture) }}"
-                                alt="Profile Picture">
+                                alt="Profile Picture " class="profile-picture">
 
 
                         </div>
@@ -103,7 +105,9 @@
 
 
 
-                    <h1 class="text-center fw-bold" style="font-family: Nunito; opacity:90%; margin-top:110px; margin-bottom:-20px">Karina Ayu</h1>
+                    <h1 class="text-center fw-bold"
+                        style="font-family: Nunito; opacity:90%; margin-top:110px; margin-bottom:-20px">
+                        {{ $ShowUserProfile->first_name }} {{ $ShowUserProfile->last_name }}</h1>
 
                 </div>
 
@@ -123,7 +127,9 @@
                                     Name
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-                                    Karina Ayu
+
+                                    {{ $ShowUserProfile->first_name }} {{ $ShowUserProfile->last_name }}
+
                                 </div>
 
                                 <div class="col-lg-1" style="margin-bottom: 10px;">
@@ -134,7 +140,7 @@
                                     Email
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-                                    karinayu11@gmail.com
+                                    {{ $ShowUserProfile->email_address }}
                                 </div>
 
                                 <div class="col-lg-1" style="margin-bottom: 10px;">
@@ -145,7 +151,7 @@
                                     Phone No.
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-                                    0812345678910
+                                    {{ $ShowUserProfile->contact_number }}
                                 </div>
 
                                 <div class="col-lg-1" style="margin-bottom: 10px;">
@@ -156,7 +162,7 @@
                                     Address
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-                                    Putri Lidah Kulon, Surabaya
+                                    {{ $ShowUserProfile->address }}
                                 </div>
 
                                 <div class="col-lg-1" style="margin-bottom: 10px;">
@@ -167,7 +173,9 @@
                                     Birthday
                                 </div>
                                 <div class="col-lg-8" style="font-family:Lexend; opacity: 90%; margin-bottom: 10px;">
-                                    Malang, July 15th 1995
+
+                                    {{ $ShowUserProfile->city }}, {{ $ShowUserProfile->birthday_month }}
+                                    {{ $ShowUserProfile->birthday_day }} {{ $ShowUserProfile->birthday_year }}
                                 </div>
 
 
@@ -176,10 +184,12 @@
 
                     </div>
                     <div class="d-flex justify-content-center mt-4">
-                        <a href="{{ route('userprofile') }}" class="btn fw-semi bold mx-3" style="font-family: Lexend">Edit Profile</a>
-                            <button type="button" class="btn fw-semi bold mx-3" style="font-family: Lexend" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Sign Out
-                            </button>
+                        <a href="{{ route('userprofile') }}" class="btn fw-semi bold mx-3"
+                            style="font-family: Lexend">Edit Profile</a>
+                        <button type="button" class="btn fw-semi bold mx-3" style="font-family: Lexend"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Sign Out
+                        </button>
                     </div>
                 </div>
             </div>
@@ -189,48 +199,29 @@
 
     </html>
 
-    <div class="container">
-        <h1>User Profile</h1>
-
-        <div class="profile-picture">
-            @if (Auth::user()->profile_picture)
-                <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile_picture) }}" alt="Profile Picture">
-            @else
-                <p>No profile picture added.</p>
-            @endif
-        </div>
-
-        <!-- Display other user profile information -->
-        <div class="profile-info">
-            <p>Name: {{ Auth::user()->name }}</p>
-            <p>Email: {{ Auth::user()->email }}</p>
-            <!-- Add more profile information here -->
-        </div>
-    </div>
-
     <style>
         /* * {
-                font-family: 'Montserrat';
-                font-weight: 700;
+                    font-family: 'Montserrat';
+                    font-weight: 700;
 
-            } */
+                } */
 
-            .profile-picture {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
+        .profile-picture {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
 
 
-}
+        }
 
-.profile-picture img {
-    width: 130px;
-    height: 130px;
-    border-radius: 100%;
-    object-fit: cover;
-    margin-left: -110%;
+        .profile-picture img {
+            width: 130px;
+            height: 130px;
+            border-radius: 100%;
+            object-fit: cover;
+            margin-left: -110%;
 
-}
+        }
 
 
 

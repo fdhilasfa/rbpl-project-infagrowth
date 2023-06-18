@@ -120,16 +120,6 @@
                         style="background-color:white;">Rent History</button>
                 </a>
             </div>
-            <div class="keranjang" style="margin-left: 400px">
-                <form action="/search" method="GET">
-                    <img src="images/search.png" type="submit">
-                    <input type="text" name="query" placeholder="Search" img src="" type="submit" />
-                </form>
-                <a href="/rentCart">
-                    <img src="images/keranjang.png" alt=""
-                        style="width: 58px; height: 58px;margin-left: 10px;">
-                </a>
-            </div>
         </div>
 
         <div class="card">
@@ -194,7 +184,7 @@
             }
         </script>
 
-        
+
     </body>
 
     </html>

@@ -24,9 +24,7 @@
         <div id="app">
             <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #EFE2DA; width: 100%; position:-webkit-sticky; position:sticky; top:0;" >
                 <div class="container">
-                    {{-- <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a> --}}
+
 
 
 
@@ -97,7 +95,6 @@
                                         data-bs-toggle="dropdown" style="color: #000000" aria-haspopup="true"
                                         aria-expanded="false" v-pre>
                                         <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile_picture) }}" alt="Profile Picture " class="profile-picture">
-
 
                                         {{ Auth::user()->name }}
                                     </a>

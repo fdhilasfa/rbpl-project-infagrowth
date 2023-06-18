@@ -14,6 +14,17 @@ use App\Http\Controllers\RentCheckoutController;
 use App\Http\Controllers\reviewNurseController;
 
 
+use App\Http\Controllers\InfarentController;
+use App\Models\Product;
+use App\Models\ShowUserProfile;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
+
+
 
 
 
@@ -44,8 +55,15 @@ Route::get('/nurserent', [App\Http\Controllers\InfanurseController::class, 'nurs
 Route::get('/infarent',[App\Http\Controllers\InfarentController::class, 'index'])->name('infarent');
 Route::get('/infasolution',[App\Http\Controllers\InfasolutionController::class, 'index'])->name('infasolution');
 
-Route::get('/rentHistory', [HistoryController::class, 'index'])->name('rentHistory');
-Route::get('/reviewNurse', [reviewNurseController::class, 'index'])->name('reviewNurse');
+Route::get('/rentHistory', [App\Http\Controllers\HistoryController::class, 'index'])->name('rentHistory');
+Route::get('/reviewNurse', [App\Http\Controllers\reviewNurseController::class, 'index'])->name('reviewNurse');
+
+Route::post('/review-nurse/{id}', [App\Http\Controllers\reviewNurseController::class, 'store2'])->name('reviewnurse');
+
+
+Route::get('/reviewnurse', [reviewNurseController::class, 'index'])->name('reviewnurse.index');
+Route::post('/reviewnurse/{id}', [reviewNurseController::class, 'store'])->name('reviewnurse.store');
+Route::get('/reviewnurse/{id}', [reviewNurseController::class, 'index2'])->name('reviewnurse.index2');
 
 
 Route::post('/submit-nurserent', [App\Http\Controllers\InfanurseController::class, 'submitNurserent'])->name('submit-nurserent');

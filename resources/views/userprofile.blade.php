@@ -24,11 +24,14 @@
                 style="text-align:left; color: #000000; font-size: 30px; font-weight:1000; letter-spacing: 9.5%; margin-left:50px; margin-bottom:-50px">
                 Edit Profile
             </p>
+            <!--
+                <form id="form1" action="{{ route('profilepicture.upload') }}" method="POST" enctype="multipart/form-data" class="form">
+                    @csrf-->
 
-            <form id="form1" action="{{ route('profilepicture.upload') }}" method="POST" enctype="multipart/form-data" class="form">
+
+            <form id="form2" method="POST" action="{{ route('save-profile') }}" enctype="multipart/form-data"
+                class="form">
                 @csrf
-
-
 
                 <div class="profile-picture">
                     @if (Auth::user()->profile_picture)
@@ -53,10 +56,8 @@
                 <div class="file-label-wrapper">
                     <label type="text" class="custom-label">Maximum size of 1MB. JPG, GIF, or PNG.</button>
                 </div>
-            </form>
+                <!-- </form>-->
 
-            <form id="form2" method="POST" action="{{ route('save-profile') }}" enctype="multipart/form-data" class="form">
-                @csrf
 
                 <div class="column">
                     <div class="input-label">
@@ -404,7 +405,7 @@
                 });
             </script>
 
-                                                -->
+                                                    -->
 
 
         </section>
@@ -450,22 +451,22 @@
         }
 
         /*
-                                                                    .file-input {
-                                                                height: 55px;
-                                                                width: 20%;
-                                                                color: #fff;
-                                                                font-size: 1rem;
-                                                                font-weight: 400;
-                                                                margin-top: 30px;
-                                                                border: none;
-                                                                cursor: pointer;
-                                                                transition: all 0.2s ease;
-                                                                background: #FF9F84;
-                                                                border: 1px solid #ddd;
-                                                                border-radius: 6px;
-                                                                margin-left: 30px;
-                                                            }
-                                                            */
+                                                                        .file-input {
+                                                                    height: 55px;
+                                                                    width: 20%;
+                                                                    color: #fff;
+                                                                    font-size: 1rem;
+                                                                    font-weight: 400;
+                                                                    margin-top: 30px;
+                                                                    border: none;
+                                                                    cursor: pointer;
+                                                                    transition: all 0.2s ease;
+                                                                    background: #FF9F84;
+                                                                    border: 1px solid #ddd;
+                                                                    border-radius: 6px;
+                                                                    margin-left: 30px;
+                                                                }
+                                                                */
         .file-input-wrapper {
             position: relative;
             display: inline-block;
@@ -766,7 +767,7 @@
             background: #000000;
         }
 
-        /*Responsive*/
+        /Responsive/
         @media screen and (max-width: 500px) {
             .form .column {
                 flex-wrap: wrap;
